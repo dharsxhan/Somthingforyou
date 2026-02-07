@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Something Within Me</title>
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      width: 100vw;
+      height: 100vh;
+      font-family: 'Poppins', Arial, sans-serif;
+      overflow: hidden;
+      background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .box {
+      width: 92%;
+      max-width: 400px;
+      background: #1e1e2e;
+      padding: 28px;
+      border-radius: 26px;
+      text-align: center;
+      box-shadow: 0 30px 70px rgba(0,0,0,0.5);
+      color: #eee;
+    }
+
+    h1 {
+      font-size: 24px;
+      margin-bottom: 8px;
+    }
+
+    p {
+      font-size: 14px;
+      color: #bbb;
+      margin-bottom: 20px;
+    }
+
+    textarea {
+      width: 100%;
+      height: 170px;
+      padding: 14px;
+      border-radius: 16px;
+      border: 1px solid #444;
+      font-size: 15px;
+      resize: none;
+      background: #2b2b40;
+      color: #fff;
+    }
+
+    .footer {
+      margin-top: 12px;
+      font-size: 12px;
+      color: #888;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="box">
+    <h1>Something within me</h1>
+    <p>“You still cross my mind.” ❤️‍🩹</p>
+
+    <textarea id="output"></textarea>
+
+    <div class="footer">Some feelings are hard to say 💜</div>
+  </div>
+
+  <script>
+    /* Read URL parameters */
+    const params = new URLSearchParams(window.location.search);
+    const from = params.get("from") || "dharshann 🤍";
+    const to = params.get("to") || "You";
+    const style = params.get("style") || "soft";
+
+    /* Message styles */
+    const messages = {
+      soft: `Hey ${to} 🌙,
+
+Somehow you keep sneaking into my day — in tiny smiles, random thoughts, and quiet moments. I don’t say it much, but I miss you… softly.
+
+— ${from}`,
+
+      playful: `Hey ${to} 😊,
+
+It’s funny how you casually live in my head rent-free. Random smiles, silly thoughts, and suddenly—there you are. Guess this is my cute way of missing you 😌
+
+— ${from}`,
+
+      deep: `Hey ${to},
+
+Some absences don’t fade — they settle quietly inside us. I carry your presence in places words can’t reach. I never stopped missing you.
+
+— ${from}`
+    };
+
+    /* Typing animation */
+    function typeMessage(text) {
+      const output = document.getElementById("output");
+      output.value = "";
+      let i = 0;
+      const interval = setInterval(() => {
+        output.value += text.charAt(i);
+        i++;
+        if (i >= text.length) clearInterval(interval);
+      }, 30);
+    }
+
+    /* Auto-generate on load */
+    window.onload = () => {
+      const message = messages[style] || messages.soft;
+      typeMessage(message);
+    };
+  </script>
+
+</body>
+</html>
